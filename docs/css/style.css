@@ -17,6 +17,14 @@ img {
     margin-right: auto;
 }
 
+.card {
+    width: 5em;
+    height: 7em;
+    background-color: #ffffff;
+    box-shadow: 0 0.0625em 0.125em rgba(0, 0, 0, 0.15);
+    border-radius: 0.25em;
+  }
+
 #cardEffect{
     width: 40%;
     text-align: center;
