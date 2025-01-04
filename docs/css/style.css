@@ -4,70 +4,31 @@ html{
 }
 
 body{
+    align-items: center;
     vertical-align: middle;
+    justify-content: center;
     background-image: linear-gradient(lightblue,lightblue,white);
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
 
-/*
-img {
-    display: block;
-    width: 20%;
-    margin-left: auto;
-    margin-right: auto;
-}*/
-
-/* width: 5em;
-height: 7em; 
-border-radius: 0.25em;*/
-
-/*position: relative;
-    animation-name: drawcard;
-    animation-iteration-count: 3;
-    animation-duration: 4s;*/
-.card {
-    width: 20em;
-    height: 28em;
-    /*top: 50%;*/
-    left: 35%;
-    background: url("../assets/cardImg/Back.jpg");
+.deck {
+    aspect-ratio: 1/1.36;
+    height: max(50%,30em);
+    background: url("../assets/Back.jpg");
     background-size: contain;
-    /*background-color: #ffffff;*/
-    box-shadow: 0 0.0625em 0.125em rgba(0, 0, 0, 0.15);
     border-radius: 1.5em;
-    margin:0 auto;
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.card {
+    aspect-ratio: 1/1.36;
+    width: 100%;
+    background: url("../assets/Back.jpg");
+    background-size: contain;
+    border-radius: 1.5em;
     cursor: pointer;
     position: fixed;
-}
-
-.card img {
-    width: 20%;
-    flex-shrink: 0;
-    min-width: 100%;
-    min-height: 100%;
-    border-radius: 1.5em;
-}
-
-/*
-.card:hover{
-    width: 20em;
-    height: 28em;
-    animation-name: drawcard;
-    animation-duration: 4s
-}*/
-
-@keyframes drawcard{
-    from {top: 0px;}
-    to {top: 700px;}       
-}
-
-#cardEffect{
-    width: 40%;
-    text-align: center;
-    margin: auto;
-}
-
-#drawCard{
-    margin: auto;
 }
