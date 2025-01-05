@@ -1,4 +1,5 @@
 let newY = startY = initialStartY = 0;
+let id = null;
 const card = document.getElementById('card')
 
 card.addEventListener('pointerdown', mouseDown)
@@ -13,14 +14,35 @@ function mouseMove(e){
     startY = e.clientY
     if (startY < initialStartY){
         newY = 0;
-    }  
-    //console.log("NewY: "+newY+" startY: "+startY)
+    }
     card.style.top = (card.offsetTop - newY) + 'px'
 }
 function mouseUp(e){
-    document.removeEventListener('pointermove', mouseMove)
-    while (startY > initialStartY){
-        startY = startY - 1
-        card.style.top = (card.offsetTop - 1) + 'px'
+    if(card.offsetTop > parseInt(card.offsetHeight/2)+1){
+        clearInterval(id)
+        id = setInterval(frame, 5)
+        function frame(){
+            if (card.offsetTop >= 3000){
+                clearInterval(id)
+                card.style.top = 0
+            }
+            else{
+                card.style.top = (card.offsetTop + 50) + 'px'
+            }
+        }
     }
+    else{
+        clearInterval(id)
+        id = setInterval(frame, 5)
+        function frame(){
+            if (card.offsetTop <= 0){
+                clearInterval(id)
+                card.style.top = 0
+            }
+            else{
+                card.style.top = (card.offsetTop - 25) + 'px'
+            }
+        }
+    }
+    document.removeEventListener('pointermove', mouseMove)
 }
