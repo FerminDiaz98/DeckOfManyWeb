@@ -1,5 +1,5 @@
 let newY = startY = initialStartY = 0;
-let id = null;
+var id = 0;
 const card = document.getElementById('card')
 const drawncard = document.getElementById('drawncard')
 const overlay = document.getElementById('overlay')
@@ -13,6 +13,7 @@ var cardDrawSFX = new Audio("assets/1carddraw.wav")
 
 function mouseDown(e){
     initialStartY = startY = e.clientY
+    cardDrawSFX = new Audio("assets/1carddraw.wav")
     document.addEventListener('pointermove', mouseMove)
     document.addEventListener('pointerup', mouseUp)
 }
@@ -23,6 +24,7 @@ function mouseMove(e){
     card.style.top = (card.offsetTop - newY) + 'px'
 }
 function mouseUp(e){
+    cardDrawSFX = new Audio("assets/1carddraw.wav")
     if(card.offsetTop > parseInt(card.offsetHeight/2)+1){
         cardDrawSFX.play()
         let cardspeed = 50
@@ -30,10 +32,10 @@ function mouseUp(e){
         id = setInterval(frame, 5)
         function frame(){
             if (card.offsetTop >= 2000){
+                clearInterval(id)
                 card.style.display = "none"
                 card.style.top = 0 + 'px'
                 drawncard.style.top = 2000 +'px'
-                clearInterval(id)
                 drawRandomCard()
             }
             else{
@@ -59,22 +61,30 @@ function mouseUp(e){
 }
 
 function drawRandomCard(){
-    //dimbackground() isn't working properly, so this will do for now
+    //dimbackground() isn't working properly, so I had to add some manual stuff
+    $('#drawncard').dimBackground()
     overlay.style.display = "inline"
     $('#overlay').animate({opacity: '0.75'}, 300)
 
-    //pick 1 of 22 possible cards
+    //pick 1 of 22 possible cards, stores them as cardValues
     const cardValues = getRandomCardValue(Math.floor(Math.random()*22))
+
+    //the drawn card is made visible and is given a new background asset
+    //the text is given the card effect, and both it and the close button are given opacity 0
     drawncard.style.display = "inline"
     drawncard.style.background = "url('assets/"+cardValues.name+"') 0% 0% / contain"
-    $('#drawncard').dimBackground()
+    $('#texteffect').html(cardValues.effect);
+    texteffect.style.opacity = 0;
+    closebutton.style.opacity = 0;
+
+    //We start the animationof the card being drawn
+    //starts at 40px speed and becomes slower each loop until it speed becomes 10px
     clearInterval(id)
     id = setInterval(frame, 5)
     let drawncardspeed = 40;
     function frame(){
         if (drawncard.offsetTop <= 0){
             drawncard.style.top = 0 + 'px'
-            $('#texteffect').html(cardValues.effect);
             $('#texteffect').animate({opacity: '0.9'}, 800)
             $('#close').animate({opacity: '0.75'}, 800)
             clearInterval(id)
