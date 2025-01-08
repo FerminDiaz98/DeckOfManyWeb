@@ -3,8 +3,13 @@ let id = null;
 const card = document.getElementById('card')
 const drawncard = document.getElementById('drawncard')
 const overlay = document.getElementById('overlay')
+const texteffect = document.getElementById('texteffect')
+const closebutton = document.getElementById('close')
 
 card.addEventListener('pointerdown', mouseDown)
+closebutton.addEventListener('click', closeCard)
+
+var cardDrawSFX = new Audio("assets/1carddraw.wav")
 
 function mouseDown(e){
     initialStartY = startY = e.clientY
@@ -19,11 +24,13 @@ function mouseMove(e){
 }
 function mouseUp(e){
     if(card.offsetTop > parseInt(card.offsetHeight/2)+1){
+        cardDrawSFX.play()
         let cardspeed = 50
         clearInterval(id)
         id = setInterval(frame, 5)
         function frame(){
             if (card.offsetTop >= 2000){
+                card.style.display = "none"
                 card.style.top = 0 + 'px'
                 drawncard.style.top = 2000 +'px'
                 clearInterval(id)
@@ -63,20 +70,36 @@ function drawRandomCard(){
     $('#drawncard').dimBackground()
     clearInterval(id)
     id = setInterval(frame, 5)
-    let drawncardspeed = 50;
+    let drawncardspeed = 40;
     function frame(){
         if (drawncard.offsetTop <= 0){
             drawncard.style.top = 0 + 'px'
             $('#texteffect').html(cardValues.effect);
-            $('#texteffect').animate({opacity: '0.9'}, 600)
+            $('#texteffect').animate({opacity: '0.9'}, 800)
+            $('#close').animate({opacity: '0.75'}, 800)
             clearInterval(id)
         }
         else{
-            drawncard.style.top = Math.max(0,(drawncard.offsetTop - Math.max(drawncardspeed,15))) + 'px'
+            drawncard.style.top = Math.max(0,(drawncard.offsetTop - Math.max(drawncardspeed,10))) + 'px'
             drawncardspeed -= 1
         }
     }
 
+}
+
+function closeCard(e){
+    //removes the drawn card and returns eveything to their initial values
+    drawncard.style.display = "none"
+    texteffect.style.opacity = 0;
+    closebutton.style.opacity = 0;
+    card.style.display = "inline"
+    
+    //remove dimBackground
+    $.undim()
+    $('#overlay').animate({opacity: '0'}, 300)
+    overlay.style.display = "none"
+
+    clearInterval(id)
 }
 
 function getRandomCardValue(randomCard){
@@ -90,7 +113,7 @@ function getRandomCardValue(randomCard){
         case 5: cardName = "Flames.jpg"; cardEffect = "A powerful devil becomes your enemy. The devil seeks your ruin and plagues your life, savoring your suffering before attempting to slay you. This enmity lasts until either you or the devil dies."; break;
         case 6: cardName = "Fool.jpg"; cardEffect = "You lose 10,000 XP, discard this card, and draw from the deck again, counting both draws as one of your declared draws. If losing that much XP would cause you to lose a level, you instead lose an amount that leaves you with just enough XP to keep your level."; break;
         case 7: cardName = "Gem.jpg"; cardEffect = "Twenty-five pieces of jewelry worth 2,000 gp each or fifty gems worth 1,000 gp each appear at your feet."; break;
-        case 8: cardName = "Idiot.jpg"; cardEffect = "testPermanently reduce your Intelligence by 1d4 + 1 (to a minimum score of 1). You can draw one additional card beyond your declared draws.Idiot"; break;
+        case 8: cardName = "Idiot.jpg"; cardEffect = "Permanently reduce your Intelligence by 1d4 + 1 (to a minimum score of 1). You can draw one additional card beyond your declared draws.Idiot"; break;
         case 9: cardName = "Jester.jpg"; cardEffect = "You gain 10,000 XP, or you can draw two additional cards beyond your declared draws."; break;
         case 10: cardName = "Key.jpg"; cardEffect = "A rare or rarer magic weapon with which you are proficient appears in your hands. The DM chooses the weapon."; break;
         case 11: cardName = "Knight.jpg"; cardEffect = "You gain the service of a 4th-level fighter who appears in a space you choose within 30 feet of you. The fighter is of the same race as you and serves you loyally until death, believing the fates have drawn him or her to you. You control this character."; break;
