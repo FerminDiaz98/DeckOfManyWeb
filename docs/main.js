@@ -71,7 +71,7 @@ function drawRandomCard(){
             clearInterval(id)
         }
         else{
-            drawncard.style.top = Math.max(0,(drawncard.offsetTop - Math.max(drawncardspeed,5))) + 'px'
+            drawncard.style.top = Math.max(0,(drawncard.offsetTop - Math.max(drawncardspeed,15))) + 'px'
             drawncardspeed -= 1
         }
     }
