@@ -86,5 +86,4 @@ body{
     color: white;
     font-size: 64px;
     cursor: pointer;
-    transform: rotateX(0deg) rotateY(0deg) !important;
 }

@@ -75,6 +75,7 @@ function drawRandomCard(){
     drawncard.style.display = "inline"
     drawncard.style.background = "url('assets/"+cardValues.name+"') 0% 0% / contain"
     $('#texteffect').html(cardValues.effect);
+    texteffect.style.fontSize = '28px'
     texteffect.style.opacity = 0;
     closebutton.style.opacity = 0;
 
