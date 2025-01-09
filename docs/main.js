@@ -11,6 +11,16 @@ closebutton.addEventListener('click', closeCard)
 
 var cardDrawSFX = new Audio("assets/1carddraw.wav")
 
+
+for (let i = 0; i < 22; i++) {
+    preloadImage(getRandomCardValue(i).name)
+}
+function preloadImage(cardName){
+    let img = new Image();
+    img.src = "assets/"+cardName
+    console.log(img.src)
+}
+
 function mouseDown(e){
     initialStartY = startY = e.clientY
     cardDrawSFX = new Audio("assets/1carddraw.wav")
