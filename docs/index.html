@@ -3,7 +3,26 @@
 <head>
     <title>Draw a card, adventurer!</title>
     <link href="css/style.css" rel="stylesheet"/>
-    <link rel="preload" href="assets/Back.jpg" as="image">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+</head>
+<body>
+    <div class="card-container">
+        <div class="deck">
+            <div class="card" id="card"></div>
+            <div class="overlay" id="overlay"></div>
+            <div class="drawncard" id="drawncard" data-tilt data-tilt-reverse="true"></div>
+            <div class="close" id="close">&times;</div>
+            <h2 class="texteffect" id="texteffect">defaultText</h2>
+        </div>
+    </div>
+</body>
+<script src="jQuery/jquery.min.js"></script>
+<script type="text/javascript" src="jQuery/jquery.dim-background.min.js"></script>
+<script type="text/javascript" src="jQuery/vanilla-tilt.js"></script>
+<script src="main.js"></script>
+</html>
+
+<!-- <link rel="preload" href="assets/Back.jpg" as="image">
     <link rel="preload" href="assets/Balance.jpg" as="image">
     <link rel="preload" href="assets/Comet.jpg" as="image">
     <link rel="preload" href="assets/Donjon.jpg" as="image">
@@ -25,21 +44,4 @@
     <link rel="preload" href="assets/Talons.jpg" as="image">
     <link rel="preload" href="assets/Throne.jpg" as="image">
     <link rel="preload" href="assets/Vizier.jpg" as="image">
-    <link rel="preload" href="assets/Void.jpg" as="image">
-</head>
-<body>
-    <div class="card-container">
-        <div class="deck">
-            <div class="card" id="card"></div>
-            <div class="overlay" id="overlay"></div>
-            <div class="drawncard" id="drawncard">
-                <div class="close" id="close">&times;</div>
-                <h2 class="texteffect" id="texteffect">defaultText</h2>
-            </div>
-        </div>
-    </div>
-</body>
-<script src="jQuery/jquery.min.js"></script>
-<script type="text/javascript" src="jQuery/jquery.dim-background.min.js"></script>
-<script src="main.js"></script>
-</html>
+    <link rel="preload" href="assets/Void.jpg" as="image"> -->

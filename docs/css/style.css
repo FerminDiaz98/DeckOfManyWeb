@@ -14,7 +14,7 @@ body{
 
 .deck {
     aspect-ratio: 1/1.36;
-    height: max(40%,20em);
+    height: max(38%,20em);
     background: url("../assets/Back.jpg");
     background-size: contain;
     border-radius: 1.5em;
@@ -42,8 +42,8 @@ body{
     border-radius: 1.5em;
     position: fixed;
     margin-top: -5%;
-    left: 50%;
-    transform: translate(-50%, 0);
+    left: -10%;
+    cursor: pointer;
     touch-action: none;
 }
 
@@ -66,22 +66,24 @@ body{
 .texteffect{
     width: 88vw;
     position: absolute; 
-    top: 100%;
+    top: 120%;
     left: 50%;
     transform: translate(-50%, 0);
-    font-size: 190%;
+    font-size: max(2em,100%);
     font-weight: bold;
     opacity: 0%;
     text-align: center;
     color: white;
+    cursor: auto;
 }
 
 .close {
     position: relative;
-    left: 103%;
+    left: 115%;
     top: 32px;
     opacity: 0;
     color: white;
-    font-size: 400%;
+    font-size: 64px;
     cursor: pointer;
+    transform: rotateX(0deg) rotateY(0deg) !important;
 }
