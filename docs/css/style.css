@@ -67,7 +67,7 @@ body{
 .texteffect{
     width: 88vw;
     position: absolute; 
-    top: 115%;
+    top: 120%;
     left: 50%;
     transform: translate(-50%, 0);
     font-size: 28px;
