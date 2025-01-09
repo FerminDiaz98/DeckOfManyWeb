@@ -85,8 +85,9 @@ function drawRandomCard(){
     drawncard.style.display = "inline"
     drawncard.style.background = "url('assets/"+cardValues.name+"') 0% 0% / contain"
     $('#texteffect').html(cardValues.effect);
-    texteffect.style.fontSize = '28px'
+    texteffect.style.display = "inline"
     texteffect.style.opacity = 0;
+    closebutton.style.display = "inline"
     closebutton.style.opacity = 0;
 
     //We start the animationof the card being drawn
@@ -112,7 +113,9 @@ function drawRandomCard(){
 function closeCard(e){
     //removes the drawn card and returns eveything to their initial values
     drawncard.style.display = "none"
+    texteffect.style.display = "none"
     texteffect.style.opacity = 0;
+    closebutton.style.display = "none"
     closebutton.style.opacity = 0;
     card.style.display = "inline"
     

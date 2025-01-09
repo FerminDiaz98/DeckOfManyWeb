@@ -76,6 +76,7 @@ body{
     text-align: center;
     color: white;
     cursor: auto;
+    display: none;
 }
 
 .close {
@@ -86,4 +87,5 @@ body{
     color: white;
     font-size: 64px;
     cursor: pointer;
+    display: none;
 }
