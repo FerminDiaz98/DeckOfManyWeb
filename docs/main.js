@@ -61,6 +61,7 @@ function mouseUp(e){
 }
 
 function drawRandomCard(){
+    id = 0;
     //dimbackground() isn't working properly, so I had to add some manual stuff
     $('#drawncard').dimBackground()
     overlay.style.display = "inline"
@@ -80,7 +81,7 @@ function drawRandomCard(){
     //We start the animationof the card being drawn
     //starts at 40px speed and becomes slower each loop until it speed becomes 10px
     clearInterval(id)
-    id = setInterval(frame, 5)
+    id = setInterval(frame, 10)
     let drawncardspeed = 40;
     function frame(){
         if (drawncard.offsetTop <= 0){
@@ -90,7 +91,7 @@ function drawRandomCard(){
             clearInterval(id)
         }
         else{
-            drawncard.style.top = Math.max(0,(drawncard.offsetTop - Math.max(drawncardspeed,10))) + 'px'
+            drawncard.style.top = Math.max(0,(drawncard.offsetTop - Math.max(drawncardspeed,15))) + 'px'
             drawncardspeed -= 1
         }
     }

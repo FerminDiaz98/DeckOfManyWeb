@@ -22,6 +22,7 @@ body{
     top: 5%;
     left: 50%;
     transform: translate(-50%, 0);
+    touch-action: none;
 }
 
 .card {
@@ -66,10 +67,10 @@ body{
 .texteffect{
     width: 88vw;
     position: absolute; 
-    top: 120%;
+    top: 115%;
     left: 50%;
     transform: translate(-50%, 0);
-    font-size: max(2em,100%);
+    font-size: 28px;
     font-weight: bold;
     opacity: 0%;
     text-align: center;
