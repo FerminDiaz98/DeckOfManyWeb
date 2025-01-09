@@ -1,6 +1,6 @@
-# Deck of Many Things web!
+# Deck of Many Things Web!
 
-http://fermindiaz98.github.io/DeckOfManyWeb
+http://fermindiaz98.github.io/deckofmanyweb
 
 
 Assets credits:
